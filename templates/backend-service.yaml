@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: {{ .Values.service.backend.port }}  # Ensure this is pulling from .Values correctly
+    - port: {{ .Values.service.backend.port }}  
       targetPort: 8000
   selector:
     app: backend
