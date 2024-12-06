@@ -1,9 +1,5 @@
-# Default values for cosmocloud-deploy.
-# Configuration for Backend, Frontend, and Redis
-
 replicaCount: 1
 
-# Image configurations
 image:
   backend:
     repository: shreybatra/sample-backend
@@ -15,7 +11,6 @@ image:
     repository: redis
     tag: latest
 
-# Frontend configuration
 frontend:
   image:
     repository: shreybatra/sample-frontend
@@ -24,7 +19,6 @@ frontend:
   env:
     BACKEND_URL: "http://backend-svc:8000"
 
-# Backend configuration
 backend:
   image:
     repository: shreybatra/sample-backend
@@ -33,41 +27,40 @@ backend:
   env:
     REDIS_URI: "redis://redis-svc:6379"
 
-# Service configurations
 service:
   backend:
     type: ClusterIP
-    port: 8000        # Ensure valid port value (8000)
+    port: 8000        
   frontend:
     type: NodePort
-    port: 5173        # Ensure valid port value (5173)
-    nodePort: 31000   # Valid NodePort value
+    port: 5173        
+    nodePort: 31000   
   redis:
     type: ClusterIP
-    port: 6379        # Valid port value (6379)
+    port: 6379        
 
-# Redis-specific configurations
+
 redis:
   image:
     repository: redis
     tag: latest
-  port: 6379  # Ensure this is valid and properly referenced
+  port: 6379  
 
-# Namespace
+
 namespace: default
 
-# ServiceAccount configuration
+
 serviceAccount:
   create: true
   annotations: {}
   name: ""
 
-# Pod annotations and security contexts
+
 podAnnotations: {}
 podSecurityContext: {}
 securityContext: {}
 
-# Ingress configuration
+
 ingress:
   enabled: false
   className: ""
@@ -79,17 +72,17 @@ ingress:
           pathType: ImplementationSpecific
   tls: []
 
-# Resources allocation for deployments
+
 resources: {}
 
-# Autoscaling configuration
+
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
 
-# NodeSelector, tolerations, and affinity for pod scheduling
+
 nodeSelector: {}
 tolerations: []
 affinity: {}
