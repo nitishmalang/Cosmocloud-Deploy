@@ -5,7 +5,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: {{ .Values.service.frontend.port }}  # Correctly referencing frontend port
+    - port: {{ .Values.service.frontend.port }} 
       targetPort: 5173
       nodePort: {{ .Values.service.frontend.nodePort }}
   selector:
